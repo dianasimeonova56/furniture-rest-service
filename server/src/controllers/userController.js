@@ -2,7 +2,7 @@ import { Router } from "express";
 
 const userController = Router();
 
-app.post('/register', (req, res) => {
+userController.post('/register', (req, res) => {
     console.log(req.body);
 
     res.end();
