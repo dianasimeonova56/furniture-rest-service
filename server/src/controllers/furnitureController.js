@@ -4,10 +4,7 @@ import furnitureService from '../services/furnitureService.js';
 const furnitureController = Router();
 
 furnitureController.get('/', async (req, res) => {
-    console.log('here');
-    
     const furniture = await furnitureService.getAll();
-    console.log(furniture);
     
 
     res.json(furniture)
@@ -16,8 +13,10 @@ furnitureController.get('/', async (req, res) => {
 furnitureController.post('/', async (req, res) => {
     const furnitureData = req.body;
 
+    const ownerId = req.user.id;
+
     try {
-        const result = await furnitureService.create(furnitureData);
+        const result = await furnitureService.create(furnitureData, ownerId);
         
         
 
