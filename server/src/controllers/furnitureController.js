@@ -4,7 +4,9 @@ import furnitureService from '../services/furnitureService.js';
 const furnitureController = Router();
 
 furnitureController.get('/', async (req, res) => {
-    const furniture = await furnitureService.getAll();
+    const filter = new URLSearchParams(req.query.where?.replaceAll('"', ''));
+    const furniture = await furnitureService.getAll(Object.fromEntries(filter?.entries() ?? []));
+    
     
 
     res.json(furniture)
