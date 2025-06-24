@@ -4,6 +4,8 @@ export const settings = {
 
 async function request(url, options) {
     try {
+        console.log(url, options);
+        
         const response = await fetch(url, options);
 
         if (response.ok == false) {
