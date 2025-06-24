@@ -12,9 +12,14 @@ furnitureController.get('/', async (req, res) => {
 furnitureController.post('/', async (req, res) => {
     const furnitureData = req.body;
 
-    const result = await furnitureService.create(furnitureData)
+    try {
+        const result = await furnitureService.create(furnitureData);
 
-    res.json(result);
+        res.json(result)
+
+    } catch (err) {
+        res.status(400).json(err);
+    }
 })
 
 export default furnitureController
