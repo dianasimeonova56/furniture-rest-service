@@ -9,5 +9,8 @@ export default {
     },
     getOne(furnitureId) {
         return Furniture.findById(furnitureId);
+    },
+    delete(furnitureId) {
+        return Furniture.findByIdAndDelete(furnitureId)
     }
 }
